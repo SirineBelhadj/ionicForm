@@ -1,0 +1,33 @@
+#featured-products {
+    .card-img {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        height: 150px;
+    }
+
+    .product-name {
+        padding: 0;
+        text-align: left;
+
+        h4 {
+            font-size: 0.9rem;
+            color: rgb(8, 4, 0);
+        }
+    }
+
+    .previous-price {
+        text-decoration: line-through;
+        font-size: 0.8rem;
+    }
+
+    ion-fab-button {
+        --background: transparent;
+        --background-focused: transparent;
+        --background-activated: transparent;
+    }
+
+    .text-bold {
+        font-weight: bold;
+    }
+}

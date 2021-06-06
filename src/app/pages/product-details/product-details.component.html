@@ -1,0 +1,100 @@
+<!--
+  - Product Details Screen
+  - @author    ThemesBuckets <themebucketbd@gmail.com>
+  - @copyright Copyright (c) 2020
+  - @license   ThemesBuckets
+-->
+
+<!-- Header -->
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+
+    <!-- Back to previous page -->
+    <ion-buttons slot="start">
+      <ion-back-button color="white" default-href="" (click)="dismiss()" text="" icon="arrow-back">
+      </ion-back-button>
+    </ion-buttons>
+
+    <!-- Title -->
+    <ion-title>{{titre}}</ion-title>
+
+    <!-- Cart Page Button -->
+    <ion-buttons slot="end">
+      <ion-button color="white" (click)="gotoCartPage()">
+       
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<!-- Main Contents of Page -->
+<ion-content id="product-details" fullscreen>
+
+  <!-- Slider of Product Images -->
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide *ngFor="let item of image">
+      <img [src]="item" />
+
+      <!-- Wish Button or Product Like/Dislike Button Option -->
+      <ion-fab vertical="top" horizontal="end">
+        <ion-fab-button>
+          <ion-icon color="primary" name="heart-outline" *ngIf="!suspendu"></ion-icon>
+          <ion-icon color="primary" name="heart" *ngIf="suspendu"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </ion-slide>
+  </ion-slides>
+
+  <!-- Product Price -->
+  <ion-row class="ion-padding">
+    <ion-text> <span style="color: rgba(27, 40, 156, 0.664);font-size: larger;font-weight: bold;">Titre de sondage : </span>{{titre}}</ion-text>
+   
+  </ion-row>
+  <ion-row class="ion-padding">
+    <ion-text><span style="color: rgba(27, 40, 156, 0.664);font-size: larger;font-weight: bold;"> Catégorie de sondage :</span>{{categorieDeSondage}}</ion-text>
+  </ion-row>
+
+  <!-- Product Name -->
+  <ion-row class="ion-padding">
+    <ion-text><span style="color: rgba(27, 40, 156, 0.664);font-size: larger;font-weight: bold;">Description de sondage </span>:{{description}}</ion-text>
+  </ion-row>
+
+  <!-- Product Description -->
+  <ion-row class="ion-padding">
+    <ion-text><span style="color: rgba(27, 40, 156, 0.664);font-size: larger;font-weight: bold;">Frais de sondage : </span> {{frais}}DTN </ion-text>
+  </ion-row>
+ 
+  
+ 
+  <ion-row class="ion-padding">
+    <ion-text><span style="color: rgba(27, 40, 156, 0.664);font-size: larger;font-weight: bold;">Date de création :</span>{{dateDeCreation}}</ion-text>
+  </ion-row>
+  <ion-row class="ion-padding">
+    <ion-text><span style="color: rgba(27, 40, 156, 0.664);font-size: larger;font-weight: bold;">Date de fermuture :</span>{{dateDeFermuture}}</ion-text>
+  </ion-row>
+  <ion-row class="ion-padding">
+    <ion-text><span style="color: rgba(27, 40, 156, 0.664);font-size: larger;font-weight: bold;">Date de modification :</span>{{dateDeModification}}</ion-text>
+  </ion-row>
+  <ion-row class="ion-padding">
+    <ion-text><span style="color: rgba(27, 40, 156, 0.664);font-size: larger;font-weight: bold;">Nombre de participant : </span>{{nbParticipant}} </ion-text>
+  </ion-row>
+  <ion-row class="ion-padding">
+    <ion-text><span style="color:rgba(27, 40, 156, 0.664);font-size: larger;font-weight: bold;">active :</span>{{active}}</ion-text>
+  </ion-row>
+  <ion-row class="ion-padding">
+    <ion-text><span style="color: rgba(27, 40, 156, 0.664);font-size: larger;font-weight: bold;">suspendu :</span>{{suspendu}}</ion-text>
+  </ion-row>
+  
+  <ion-row class="ion-padding">
+    <ion-text><span style="color: rgba(27, 40, 156, 0.664);font-size: larger;font-weight: bold;">Image :</span>{{image}}</ion-text>
+  </ion-row>
+
+<!-- Footer -->
+<ion-footer class="ion-no-border">
+  <ion-toolbar class="ion-padding" transparent>
+    <!-- Add To Cart Button -->
+    <ion-button class="add-to-cart" color="primary" expand="block" (click)="addToCart()">Participer
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

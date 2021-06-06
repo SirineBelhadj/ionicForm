@@ -1,0 +1,38 @@
+<!--
+  - Search Screen
+  - @author    ThemesBuckets <themebucketbd@gmail.com>
+  - @copyright Copyright (c) 2020
+  - @license   ThemesBuckets
+-->
+
+<!-- Header -->
+<ion-header class="ion-no-border"> 
+  <ion-toolbar color="primary">
+
+    <!-- Back to previous page option button -->
+    <ion-buttons slot="start">
+      <ion-back-button color="white" default-href="" (click)="dismiss()" text="" icon="arrow-back">
+      </ion-back-button>
+    </ion-buttons>
+
+    <!-- Page Title -->
+    <ion-title>Vos sondages</ion-title>
+
+    <!-- Cart Button Option -->
+    <ion-buttons slot="end">
+      <ion-button color="white" (click)="gotoCartPage()">
+        <ion-icon name="cart"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Contents -->
+<ion-content id="search" fullscreen class="ion-padding">
+
+  <!-- Search bar -->
+  <ion-searchbar placeholder="rechercher votre sondage" debounce="500" (ionInput)="getProducts($event)"></ion-searchbar>
+
+  <!-- When search result is empty -->
+  <!-- No products Found -->
+  

@@ -1,0 +1,45 @@
+<div id="featured-products">
+  <ion-item-divider color="white" class="ion-padding-top">
+    <ion-label color="dark" class="text-bold">Liste des sondages en cours</ion-label>
+    <ion-button class="ion-margin-end" size="small" slot="end" color="primary" fill="clear" routerLink="/tabs/products"
+      routerDirection="root">Voir tout </ion-button>
+    <!--    A{sport,santé,entreprenariat,éducation,politique,culture,social,finance,mode,autre}
+        B{plus haut valeur de frais,plus bas valeur de frais}
+        C
+        -->
+        
+    </ion-item-divider>
+
+  <ion-slides [options]="slideOpts" class="ion-padding-top">
+    <ion-slide *ngFor="let item of products">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-card class="ion-no-margin">
+              <div class="card-img" [style.background-image]="'url(' + item.images[0] + ')'"
+                (click)="goToProductDetails(item)"></div>
+
+              <ion-fab vertical="top" horizontal="end">
+                <ion-fab-button>
+                  <ion-icon color="primary" name="heart-outline" *ngIf="!item.active"></ion-icon>
+                  <ion-icon color="primary" name="heart" *ngIf="item.active"></ion-icon>
+                </ion-fab-button>
+              </ion-fab>
+
+              <ion-card-content (click)="goToProductDetails(item)">
+                <ion-row>
+                  <ion-text style="color: rgb(231, 93, 1);">{{item.titre}}</ion-text>
+                <!--  <span class="previous-price"> {{item.description}}</span>
+                --></ion-row>
+                <ion-row style class="product-name">
+                  <h4>{{item.description}}</h4>
+                </ion-row>
+                <ion-row style="color: rgba(216, 177, 6, 0.966);">Frais : {{item.frais}} DTN</ion-row>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-slide>
+  </ion-slides>
+</div>

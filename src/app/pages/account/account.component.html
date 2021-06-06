@@ -1,0 +1,144 @@
+<!--
+  - Account Screen
+  - @author    ThemesBuckets <themebucketbd@gmail.com>
+  - @copyright Copyright (c) 2020
+  - @license   ThemesBuckets
+-->
+
+<!-- Header -->
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+
+    <!-- Side Menu -->
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  
+    <!-- Page title -->
+    <ion-title>Compte</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Contents -->
+<ion-content id="account" class="ion-padding">
+  
+
+  <!-- User/Profile Infos -->
+  <div class="flex">
+    <div style="background-color: rgb(221, 221, 221);width: 96%;justify-content: center;">
+    <div class="border-blue" style="margin-left: 33%;">
+      <div class="border-white">
+        <div class="img-box">
+            <img src="assets/images/elon-musk.jpg">
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <ion-card>
+    <ion-row>
+ 
+    
+     <ion-item lines="none" style="color: rgb(29, 93, 129);width: 100%;" >
+        <strong>Mon compte</strong> 
+        <ion-label (click)="updateMode()" style="cursor: pointer;margin-left: 47%;"> <ion-icon name="create"></ion-icon> Modifier   </ion-label>
+      </ion-item>
+     </ion-row>
+ 
+  <ion-item >
+    <ion-label class="ion-margin-end" size="small" color="dark" fill="clear" ><strong> Nom et prénom :</strong></ion-label>
+  <ion-label *ngIf="!modeUpdate" ></ion-label>
+    <ion-input type="text" *ngIf="modeUpdate" class="ion-margin-end" placeholder="saisir ..."></ion-input>
+  </ion-item>
+
+  <ion-item >
+    <ion-input class="ion-margin-end" size="small" color="dark" fill="clear"  style="margin-left:0px;" >
+      <strong> Sexe :</strong> 
+      <ion-radio-group>
+      <ion-item class="ion-padding-top">
+       <ion-radio>
+        </ion-radio>Femme
+       <ion-radio style="margin-left:20px;">
+         </ion-radio>Homme
+        </ion-item>
+      </ion-radio-group>
+    </ion-input>
+  
+      <ion-label *ngIf="!modeUpdate" ></ion-label>
+    <ion-input type="text" *ngIf="modeUpdate" class="ion-margin-end" ></ion-input>
+  </ion-item>
+  <ion-item >
+    <ion-label class="ion-margin-end" size="small" color="dark" fill="clear" ><strong> Date de naissance :</strong></ion-label>
+  <ion-label *ngIf="!modeUpdate" ></ion-label>
+    <ion-input type="text" *ngIf="modeUpdate" class="ion-margin-end" placeholder="saisir ..."></ion-input>
+  </ion-item>
+  <ion-item >
+    <ion-label class="ion-margin-end" size="small" color="dark" fill="clear" ><strong> Email :</strong></ion-label>
+  <ion-label *ngIf="!modeUpdate" ></ion-label>
+    <ion-input type="text" *ngIf="modeUpdate" class="ion-margin-end" placeholder="saisir ..."></ion-input>
+  </ion-item>
+  <ion-item >
+    <ion-label class="ion-margin-end" size="small" color="dark" fill="clear" ><strong> Mot de passe :</strong></ion-label>
+  <ion-label *ngIf="!modeUpdate" ></ion-label>
+    <ion-input type="text" *ngIf="modeUpdate" class="ion-margin-end" placeholder="saisir ..."></ion-input>
+  </ion-item>
+  
+  <ion-item >
+    <ion-label class="ion-margin-end" size="small" color="dark" fill="clear" ><strong> Numéro de téléphone :</strong></ion-label>
+  <ion-label *ngIf="!modeUpdate" ></ion-label>
+    <ion-input type="text" *ngIf="modeUpdate" class="ion-margin-end" placeholder="saisir ..."></ion-input>
+  </ion-item>
+
+  <ion-item >
+    <ion-label class="ion-margin-end" size="small" color="dark" fill="clear" ><strong> Zone géographique :</strong></ion-label>
+  <ion-label *ngIf="!modeUpdate" ></ion-label>
+    <ion-input type="text" *ngIf="modeUpdate" class="ion-margin-end" placeholder="saisir ..."></ion-input>
+  </ion-item>
+  <ion-item >
+    <ion-label class="ion-margin-end" size="small" color="dark" fill="clear" ><strong>Domaine d'activité :</strong></ion-label>
+  <ion-label *ngIf="!modeUpdate" ></ion-label>
+    <ion-input type="text" *ngIf="modeUpdate" class="ion-margin-end" placeholder="saisir ..."></ion-input>
+  </ion-item>
+  <ion-item >
+    <ion-label class="ion-margin-end" size="small" color="dark" fill="clear" ><strong> Matricule fiscale :</strong></ion-label>
+  <ion-label *ngIf="!modeUpdate" ></ion-label>
+    <ion-input type="text" *ngIf="modeUpdate" class="ion-margin-end" placeholder="saisir ..."></ion-input>
+  </ion-item>
+  <ion-item >
+    <ion-label class="ion-margin-end" size="small" color="dark" fill="clear" ><strong> Registre de commerce :</strong></ion-label>
+  <ion-label *ngIf="!modeUpdate" ></ion-label>
+    <ion-input type="text" *ngIf="modeUpdate" class="ion-margin-end" placeholder="saisir ..."></ion-input>
+  </ion-item>
+</ion-card>
+<ion-card>
+  <ion-item lines="none" style="color: rgb(29, 93, 129);width: 100%;" >
+    <strong>compte associés</strong> </ion-item>
+    <ion-item >
+      <ion-label class="ion-margin-end" size="small" color="dark" fill="clear" ><ion-icon name="logo-facebook"></ion-icon></ion-label>
+    <ion-label *ngIf="!modeUpdate" ></ion-label>
+      <ion-input type="text" *ngIf="modeUpdate" class="ion-margin-end" placeholder="saisir ..."></ion-input>
+    </ion-item>
+
+    <ion-item >
+      <ion-label class="ion-margin-end" size="small" color="dark" fill="clear" ><ion-icon name="logo-google"></ion-icon></ion-label>
+    <ion-label *ngIf="!modeUpdate" ></ion-label>
+      <ion-input type="text" *ngIf="modeUpdate" class="ion-margin-end" placeholder="saisir ..."></ion-input>
+    </ion-item>
+    <ion-item >
+      <ion-label class="ion-margin-end" size="small" color="dark" fill="clear" ><ion-icon name="logo-instagram"></ion-icon></ion-label>
+    <ion-label *ngIf="!modeUpdate" ></ion-label>
+      <ion-input type="text" *ngIf="modeUpdate" class="ion-margin-end" placeholder="saisir ..."></ion-input>
+    </ion-item>
+  </ion-card>
+  <ion-card>
+    <ion-item lines="none" style="color: rgb(29, 93, 129);width: 100%;" >
+      <strong>Notifications</strong> </ion-item>
+      
+        <ion-item >
+          <ion-label class="ion-margin-end" size="small" color="dark" fill="clear" ><strong>Notification</strong> </ion-label>
+        <ion-label *ngIf="!modeUpdate" ></ion-label>
+          <ion-input type="text" *ngIf="modeUpdate" class="ion-margin-end" placeholder="saisir ..."></ion-input>
+        </ion-item>
+      </ion-card>
+      <ion-button style="margin-left:3%; ">Enregistrer</ion-button>
+</ion-content>
