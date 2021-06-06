@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { FormulaireComponent } from './formulaire/formulaire.component';
 import { ListeDesSondagesComponent } from './liste-des-sondages/liste-des-sondages.component';
 import { 
   AuthGuardService as AuthGuard 
@@ -8,6 +7,7 @@ import {
 
 const routes: Routes = [
   { path: '', redirectTo: 'onbroading', pathMatch: 'full' },
+  { path: 'survey', loadChildren: () => import('./pages/survey/survey.module').then(m => m.SurveyModule) },
   { path: 'onbroading', loadChildren: () => import('./pages/onboarding/onboarding.module').then(m => m.OnboardingModule) },
   { path: 'landing', loadChildren: () => import('./pages/auth/landing-page/landing-page.module').then(m => m.LandingPageModule) },
   { path: 'signup', loadChildren: () => import('./pages/auth/signup/signup.module').then(m => m.SignupModule) },
@@ -18,7 +18,6 @@ const routes: Routes = [
   canActivate: [AuthGuard]},
   { path: 'cart', loadChildren: () => import('./pages/cart/cart.module').then(m => m.CartModule) },
   { path: '', loadChildren: () => import('./pages/tabs/tabs.module').then(m => m.TabsPageModule) },
-  {path:"formulaire" , component :FormulaireComponent,canActivate: [AuthGuard]},
   {path:"liste-des-sondages", component :ListeDesSondagesComponent},
  
 ];

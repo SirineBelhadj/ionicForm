@@ -24,7 +24,7 @@ export class HomeTopSliderComponent implements OnInit {
   ngOnInit() { }
   
   goToFormulaire(){
-    this.router.navigate(["/formulaire"])
+    this.router.navigate(["/survey"])
   }
   auth(){
     localStorage.setItem('loggedIn','1')

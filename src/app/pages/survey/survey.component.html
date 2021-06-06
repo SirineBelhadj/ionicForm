@@ -1,0 +1,58 @@
+<!-- survey -->
+<div id="survey">
+  <ion-item-divider color="white" class="ion-padding-top">
+    <ion-label color="dark" class="text-bold">Survey Form</ion-label>
+  </ion-item-divider>
+
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-no-padding">
+      <ion-col size="12">
+        <ion-card>
+          <!-- <ion-card-header>
+            Please Fill The Form To Add A Question ...
+          </ion-card-header> -->
+          <ion-card-body>
+            <!-- name input -->
+            <ion-item>
+              <ion-label class="ion-margin-end" size="small" color="dark" fill="clear">Name : </ion-label>
+              <ion-input [(ngModel)]="name" type="text" class="ion-margin-end" placeholder="name..."></ion-input>
+            </ion-item>
+            <!-- end name input -->
+            <!-- type input -->
+            <ion-item>
+              <ion-label>Type</ion-label>
+              <ion-select [(ngModel)]="type" placeholder="Select One">
+                <ion-select-option value="textarea">Textarea</ion-select-option>
+                <ion-select-option value="number">Number</ion-select-option>
+                <ion-select-option value="checkbox">Checkbox</ion-select-option>
+                <ion-select-option value="radio">Radio</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-card-body>
+          <!-- end type input -->
+          <ion-item>
+            <ion-button slot="end" fill="clear" (click)="addQuestion()">Add Question</ion-button>
+          </ion-item>
+        </ion-card>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+  <ion-item-divider color="white" class="ion-padding-top">
+    <ion-label color="dark" class="text-bold">Questions List</ion-label>
+  </ion-item-divider>
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-no-padding">
+      <ion-col size="12" *ngFor="let item of (questions?.length ? questions: []); let i=index">
+        <ion-card>
+          <!-- <img src="../../../assets/images/question.svg" width="40px" /> -->
+          <ion-card-header>
+            <ion-card-subtitle>Name : {{item.name}}</ion-card-subtitle>
+            <ion-card-subtitle>Type : {{item.type}}</ion-card-subtitle>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
+<!-- End survey -->

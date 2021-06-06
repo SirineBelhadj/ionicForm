@@ -28,6 +28,8 @@ export class DealComponent implements OnInit {
   // Get list of deals
   getDeals() {
     this.deals = this.dealsService.getDeals();
+    console.log("this.deals : ",this.deals);
+    
   }
 
   // Go to cart page function
