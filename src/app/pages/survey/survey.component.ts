@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Question } from 'src/app/models/formulaire';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-survey',
@@ -8,27 +9,50 @@ import { Question } from 'src/app/models/formulaire';
 })
 export class SurveyComponent implements OnInit {
 
-  questions: Question[] = []
-  name: string = "";
-  type: string = "";
-  constructor() { }
+  question = {
+    id: "",
+    name: "",
+    type: "",
+  }
+
+  surveyForm = {
+    title: "",
+    description: "",
+    category: "",
+    gender: [],
+    maxAge: "",
+    minAge: "",
+    frais: "",
+    participantsNumber: null,
+    startDate: null,
+    endDate: null,
+    questions: new Array<Question>()
+  }
+  constructor(private categoryService: CategoryService) { }
 
   ngOnInit() { }
 
-  makeid(length) {
-    var result = [];
-    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for (var i = 0; i < length; i++) {
-      result.push(characters.charAt(Math.floor(Math.random() *
-        charactersLength)));
-    }
-    return result.join('');
-  }
   addQuestion() {
-    const question = new Question(this.name, this.type);
-    this.questions.push(question);
+    const question = new Question(this.question.name, this.question.type);
+    if (!this.question.name || !this.question.type) console.error("please enter a valid name | name");
+    else {
+      this.surveyForm.questions.push(question);
+      this.question.name = ""
+      this.question.type = ""
+    }
   }
 
-
+  submitForm() {
+    console.log("this.surveyForm", this.surveyForm)
+    var validForm: boolean = true;
+    Object.keys(this.surveyForm).map(key => {
+      if (
+        key != "description" &&
+        (!this.surveyForm[key]
+          || this.surveyForm[key] == ""
+          || (Array.isArray(this.surveyForm[key]) && !this.surveyForm[key].length))
+      ) validForm = false
+    });
+    if (!validForm) console.error('Please enter valid information.')
+  }
 }

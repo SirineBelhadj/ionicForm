@@ -4,14 +4,22 @@ export class formulaire {
 }
 
 export class Question {
+    id: string;
     name: string;
     type: string; // textarea // number // checkbox / radio
-    image: string = "";
-    options?: any = [];
-    constructor(name, type, image?, options?) {
-        this.name = name
+    constructor(name, type) {
+        this.id = makeId(5),
+            this.name = name
         this.type = type
-        this.image = image
-        this.options = options
     }
+}
+
+const makeId = (length) => {
+    var result = [];
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for (var i = 0; i < length; i++) {
+        result.push(characters.charAt(Math.floor(Math.random() * charactersLength)));
+    }
+    return result.join('');
 }

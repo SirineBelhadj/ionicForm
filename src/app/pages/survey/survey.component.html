@@ -1,58 +1,178 @@
 <!-- survey -->
-<div id="survey">
-  <ion-item-divider color="white" class="ion-padding-top">
-    <ion-label color="dark" class="text-bold">Survey Form</ion-label>
-  </ion-item-divider>
+<ion-content [scrollEvents]="true">
+  <div id="survey">
+    <ion-item-divider color="white" class="ion-padding-top">
+      <ion-label color="dark" class="text-bold">Formulaire d'Enquête</ion-label>
+      <ion-button class="ion-margin-end" size="small" slot="end" color="primary" fill="clear" (click)="submitForm()">
+        Submit Form</ion-button>
+    </ion-item-divider>
 
-  <ion-grid class="ion-no-padding">
-    <ion-row class="ion-no-padding">
-      <ion-col size="12">
-        <ion-card>
-          <!-- <ion-card-header>
+    <ion-grid class="ion-no-padding">
+      <ion-row class="ion-no-padding">
+        <ion-col size="12">
+          <ion-card>
+            <!-- <ion-card-header>
             Please Fill The Form To Add A Question ...
           </ion-card-header> -->
-          <ion-card-body>
-            <!-- name input -->
-            <ion-item>
-              <ion-label class="ion-margin-end" size="small" color="dark" fill="clear">Name : </ion-label>
-              <ion-input [(ngModel)]="name" type="text" class="ion-margin-end" placeholder="name..."></ion-input>
-            </ion-item>
-            <!-- end name input -->
-            <!-- type input -->
-            <ion-item>
-              <ion-label>Type</ion-label>
-              <ion-select [(ngModel)]="type" placeholder="Select One">
-                <ion-select-option value="textarea">Textarea</ion-select-option>
-                <ion-select-option value="number">Number</ion-select-option>
-                <ion-select-option value="checkbox">Checkbox</ion-select-option>
-                <ion-select-option value="radio">Radio</ion-select-option>
-              </ion-select>
-            </ion-item>
-          </ion-card-body>
-          <!-- end type input -->
-          <ion-item>
-            <ion-button slot="end" fill="clear" (click)="addQuestion()">Add Question</ion-button>
-          </ion-item>
-        </ion-card>
-      </ion-col>
+            <ion-card-body>
+              <!-- name input -->
+              <ion-item>
+                <ion-label class="ion-margin-end" size="small" color="dark" fill="clear">Titre :
+                </ion-label>
+                <ion-input [(ngModel)]="surveyForm.title" type="text" class="ion-margin-end" placeholder="First Survey">
+                </ion-input>
+              </ion-item>
+              <!-- end name input -->
 
-    </ion-row>
-  </ion-grid>
-  <ion-item-divider color="white" class="ion-padding-top">
-    <ion-label color="dark" class="text-bold">Questions List</ion-label>
-  </ion-item-divider>
-  <ion-grid class="ion-no-padding">
-    <ion-row class="ion-no-padding">
-      <ion-col size="12" *ngFor="let item of (questions?.length ? questions: []); let i=index">
-        <ion-card>
-          <!-- <img src="../../../assets/images/question.svg" width="40px" /> -->
-          <ion-card-header>
-            <ion-card-subtitle>Name : {{item.name}}</ion-card-subtitle>
-            <ion-card-subtitle>Type : {{item.type}}</ion-card-subtitle>
-          </ion-card-header>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</div>
-<!-- End survey -->
+              <ion-item>
+                <ion-label>Type</ion-label>
+                <ion-select [(ngModel)]="surveyForm.category" placeholder="Catégorie">
+                  <ion-select-option *ngFor="let item of categoryService.categoryList()" [value]="item.name">
+                    {{item.name}}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <!-- name input -->
+              <ion-item>
+                <ion-label class="ion-margin-end" size="small" color="dark" fill="clear">Description :
+                </ion-label>
+                <ion-input [(ngModel)]="surveyForm.description" type="text" class="ion-margin-end"
+                  placeholder="Small description Here"></ion-input>
+              </ion-item>
+              <!-- end name input -->
+              <!-- name input -->
+              <ion-item>
+                <ion-label class="ion-margin-end" size="small" color="dark" fill="clear">Nombre d'Utilisateurs :
+                </ion-label>
+                <ion-input [(ngModel)]="surveyForm.participantsNumber" type="number" class="ion-margin-end"
+                  placeholder="0"></ion-input>
+              </ion-item>
+              <!-- end name input -->
+              <!-- name input -->
+              <ion-item>
+                <ion-label class="ion-margin-end" size="small" color="dark" fill="clear">Frais :
+                </ion-label>
+                <ion-input [(ngModel)]="surveyForm.frais" type="number" class="ion-margin-end" placeholder="0">
+                </ion-input>
+              </ion-item>
+              <!-- end name input -->
+
+              <!-- name input -->
+              <ion-item>
+                <ion-label class="ion-margin-end" size="small" color="dark" fill="clear">Date Debut : </ion-label>
+                <ion-datetime placeholder="Jun, 08, 2021" [(ngModel)]="surveyForm.startDate" display-timezone="utc">
+                </ion-datetime>
+              </ion-item>
+              <!-- end name input -->
+
+              <!-- name input -->
+              <ion-item>
+                <ion-label class="ion-margin-end" size="small" color="dark" fill="clear">Date Fin : </ion-label>
+                <ion-datetime placeholder="Jun, 09, 2021" [(ngModel)]="surveyForm.endDate" display-timezone="utc">
+                </ion-datetime>
+
+              </ion-item>
+              <!-- end name input -->
+              <!-- type input -->
+            </ion-card-body>
+            <!-- end type input -->
+
+          </ion-card>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+    <ion-item-divider color="white" class="ion-padding-top">
+      <ion-label color="dark" class="text-bold">Population cible </ion-label>
+    </ion-item-divider>
+    <ion-grid class="ion-no-padding">
+      <ion-row class="ion-no-padding">
+        <ion-col size="12">
+          <ion-card>
+            <!-- <ion-card-header>
+            Please Fill The Form To Add A Question ...
+          </ion-card-header> -->
+            <ion-card-body>
+
+              <ion-item>
+                <ion-label>Genre</ion-label>
+                <ion-select [(ngModel)]="surveyForm.gender" placeholder="Genre" multiple>
+                  <ion-select-option [value]="homme">Homme</ion-select-option>
+                  <ion-select-option [value]="femme">Femme</ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <!-- name input -->
+              <ion-item>
+                <ion-label class="ion-margin-end" size="small" color="dark" fill="clear">Age : </ion-label>
+                <ion-input [(ngModel)]="surveyForm.minAge" type="number" max="100" min="0" class="ion-margin-end"
+                  placeholder="Age Minimale">
+                </ion-input>
+                <ion-input [(ngModel)]="surveyForm.maxAge" type="number" max="100" min="0" class="ion-margin-end"
+                  placeholder="Age Maximale">
+                </ion-input>
+              </ion-item>
+              <!-- end name input -->
+              <!-- type input -->
+
+
+
+
+            </ion-card-body>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-item-divider color="white" class="ion-padding-top">
+      <ion-label color="dark" class="text-bold">List Des Questions </ion-label>
+    </ion-item-divider>
+    <ion-grid class="ion-no-padding">
+      <ion-row class="ion-no-padding">
+        <ion-col size="12">
+          <ion-card>
+            <!-- <ion-card-header>
+            Please Fill The Form To Add A Question ...
+          </ion-card-header> -->
+            <ion-card-body>
+              <!-- name input -->
+              <ion-item>
+                <ion-label class="ion-margin-end" size="small" color="dark" fill="clear">Titre : </ion-label>
+                <ion-input [(ngModel)]="question.name" type="text" class="ion-margin-end"
+                  placeholder="How old are you?">
+                </ion-input>
+              </ion-item>
+              <!-- end name input -->
+              <!-- type input -->
+              <ion-item>
+                <ion-label>Type</ion-label>
+                <ion-select [(ngModel)]="question.type" placeholder="textarea">
+                  <ion-select-option value="textarea">Textarea</ion-select-option>
+                  <ion-select-option value="number">Number</ion-select-option>
+                  <ion-select-option value="checkbox">Checkbox</ion-select-option>
+                  <ion-select-option value="radio">Radio</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-card-body>
+            <!-- end type input -->
+            <ion-item>
+              <ion-button slot="end" fill="clear" (click)="addQuestion()">Add Question</ion-button>
+            </ion-item>
+          </ion-card>
+        </ion-col>
+        <ion-col size="12" *ngFor="let item of (surveyForm.questions?.length ? surveyForm.questions: []); let i=index">
+
+          <ion-card>
+            <!-- <img src="../../../assets/images/question.svg" width="40px" /> -->
+            <ion-card-header>
+              <ion-card-subtitle><strong>Question {{ i + 1 }}</strong></ion-card-subtitle>
+              <ion-card-subtitle>Titre : {{item.name}}</ion-card-subtitle>
+              <ion-card-subtitle>Type : {{item.type}}</ion-card-subtitle>
+            </ion-card-header>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
