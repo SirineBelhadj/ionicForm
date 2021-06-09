@@ -15,7 +15,7 @@ export class ProductsService {
       {
         id: 1,
         titre: "impacte des réseaux sociaux",
-        categorieDeSondage: `1`,
+        categorieDeSondage: "culture",
         description: 'Ce sondage est dédié au genns qui utilisent les réseaux sociaux',
         dateDeCreation: '28/05/2021',
         dateDeFermuture:' 30/06/2021',
@@ -31,7 +31,7 @@ export class ProductsService {
       {
         id: 2,
         titre: "Vaccination de COVID",
-        categorieDeSondage: `2`,
+        categorieDeSondage: "sport",
         description: 'Ce sondage est dédié aux gens qui ont idée sur la vaccination',
         dateDeCreation: '28/05/2021',
         dateDeFermuture:' 30/06/2021',
@@ -45,7 +45,7 @@ export class ProductsService {
       {
         id: 1,
         titre: "impacte des réseaux sociaux",
-        categorieDeSondage: `Social`,
+        categorieDeSondage: "sante",
         description: 'Ce sondage est dédié au genns qui utilisent les réseaux sociaux',
         dateDeCreation: '28/05/2021',
         dateDeFermuture:' 30/06/2021',

@@ -11,5 +11,6 @@ export class Product {
     suspendu:boolean;
     nbParticipant:number;
     frais?:number=0.0;
+    enabled?
     
 }

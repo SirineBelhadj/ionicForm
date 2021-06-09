@@ -9,7 +9,7 @@
   <ion-grid class="ion-no-padding">
     <ion-row class="ion-no-padding">
     <!-- <ion-col size="6" *ngFor="let item of (categories ? categories.slice(0,2): []); let i=index">
-        --> <ion-col size="6" *ngFor="let item of (categories ? categories.slice(0,2): []); let i=index">
+        --> <ion-col size="6" *ngFor="let item of (categoryService.categories ? categoryService.categories.slice(0,2): []); let i=index">
 
         <ion-card class="ion-no-padding" routerLink="/tabs/products" routerDirection="root">
           <img [src]="item.image" />
