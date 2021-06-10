@@ -52,12 +52,21 @@
     <div class="ion-text-start">
         <ion-item>
             <ion-label>Catégorie</ion-label>
-            <ion-select [(ngModel)]="selectedCategories" #C (ionChange)="onChangeCategory(C.value)"
+            <ion-select [(ngModel)]="selectedCategories" #C (ionChange)="onChange(C.value)"
                 placeholder="Catégorie" multiple>
                 <ion-select-option *ngFor="let item of categoryService.categoryList()" [value]="item.value">
                     {{item.name}}
                 </ion-select-option>
             </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label class="ion-margin-end" size="small" color="dark" fill="clear">Frais : </ion-label>
+            <ion-input [(ngModel)]="filter.minFrais" min="1" #minFrais (ionChange)="onChange(minFrais.value)"
+                type="number" min="0" class="ion-margin-end" placeholder="Frais Minimale">
+            </ion-input>
+            <ion-input [(ngModel)]="filter.maxFrais" min="1" #maxFrais (ionChange)="onChange(maxFrais.value)"
+                type="number" min="0" class="ion-margin-end" placeholder="Frais Maximale">
+            </ion-input>
         </ion-item>
     </div>
     <!-- End Product View Options -->

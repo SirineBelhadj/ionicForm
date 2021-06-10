@@ -23,14 +23,16 @@ export class ProductsComponent implements OnInit {
 
   // List of prodict
   products: Product[];
-  selectedCategories: Product[];
+  selectedCategories: string[] = [];
 
   grid: Boolean = true;
   oneColumn: Boolean = false;
   list: Boolean = false;
 
-
-
+  filter = {
+    minFrais: null,
+    maxFrais: null
+  }
 
   constructor(
     private productsService: ProductsService,
@@ -44,6 +46,8 @@ export class ProductsComponent implements OnInit {
   // Get List of Products
   getProductList() {
     this.products = this.productsService.productList();
+    // var frais = this.products.map(prod => prod.frais)
+    // this.filter.maxFrais = Math.max(...frais)
     this.products = this.products.map(prod => ({ ...prod, enabled: true }));
   }
   selectCategorie(id: number) {
@@ -89,17 +93,30 @@ export class ProductsComponent implements OnInit {
   }
 
 
-  onChangeCategory(event) {
+  onChange(event) {
     console.log("event : ", event)
-    if (!event || !event.length || event == []) {
+    if (Array.isArray(this.selectedCategories) && (!event.length || event == [])) {
       this.getProductList();
-    } else if (event && event.length) {
+    } else if (this.selectedCategories && Array.isArray(this.selectedCategories) && this.selectedCategories.length) {
       this.products.map(prod => {
-        if (event.includes(prod.categorieDeSondage))
+        if (this.selectedCategories.includes(prod.categorieDeSondage))
           prod.enabled = true
         else prod.enabled = false
       })
     }
+    else if (this.filter.minFrais && this.filter.maxFrais) {
+      this.products.map(prod => {
+        if (this.filter.minFrais <= prod.frais && this.filter.maxFrais >= prod.frais)
+          prod.enabled = true
+        else prod.enabled = false
+      })
+    }
+    // else if (this.filter.maxFrais) {
+    //   this.products.map(prod => {
+    //     if (this.filter.maxFrais >= prod.frais)
+    //       prod.enabled = true
+    //     else prod.enabled = false
+    //   })
+    // }
   }
-
 }

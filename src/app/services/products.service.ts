@@ -21,8 +21,7 @@ export class ProductsService {
         dateDeFermuture:' 30/06/2021',
         dateDeModification:' 28/05/2021',
         images:["assets/images/products/product-1.1.jpg", "assets/images/products/product-1.2.jpg", "assets/images/products/product-1.3.jpg"],
-       
-       
+        frais: 600,      
         nbParticipant:0,
         active: true,
         suspendu: false,
@@ -40,7 +39,7 @@ export class ProductsService {
         nbParticipant:0,
         active: true,
         suspendu: false,
-       
+        frais: 400,      
       },
       {
         id: 1,
@@ -54,7 +53,7 @@ export class ProductsService {
         nbParticipant:0,
         active: true,
         suspendu: false,
-       
+        frais: 500,      
       }
     ];
     
